@@ -1,13 +1,17 @@
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Lampada l1 = new Lampada(220, 80, true);
-        Lampada l2 = new Lampada(110, 60);
-        Lampada l3 = new Lampada();
+        Lampada l1 = new Lampada();
+        Lampada l2 = new Lampada();
+        // l2.mostrar();
+
+        l1.setTensao(110);
+        l1.setPotencia(60);
+        // l1.setQuebrado(true);
 
         l1.mostrar();
-        l2.mostrar();
-        l3.mostrar();
+
+        System.out.println("Soma das Potencias 1 e 2: " + (l1.getPotencia() + l2.getPotencia()));
 
     }
 }
