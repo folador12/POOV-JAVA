@@ -1,3 +1,5 @@
+package itens;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -10,7 +12,7 @@ public class Produto {
     private BigDecimal precoCompra;
     private LocalDate dataCompra;
     private LocalDate dataValidade;
-    private int situacao;
+    private Situacao situacao;
     private String marca;
     private int quantMinima;
     private int quantAtual;
@@ -18,11 +20,18 @@ public class Produto {
     Scanner s = new Scanner(System.in);
 
     public Produto() {
-
+        codigo = 0L;
+        nome = "Sem nome";
+        descricao = "Sem descrição";
+        marca = "Sem marca";
+        precoCompra = BigDecimal.ZERO;
+        dataCompra = dataValidade = LocalDate.now();
+        quantAtual = quantMinima = 0;
+        situacao = Situacao.INVALIDO;
     }
 
     public Produto(long codigo, String nome, String descricao, BigDecimal precoCompra, LocalDate dataCompra,
-            LocalDate dataValidade, int situacao, String marca, int quantMinima, int quantAtual) {
+            LocalDate dataValidade, Situacao situacao, String marca, int quantMinima, int quantAtual) {
 
         setCodigo(codigo);
         setNome(nome);
@@ -128,11 +137,11 @@ public class Produto {
         return dataValidade;
     }
 
-    public void setSituacao(int situacao) {
+    public void setSituacao(Situacao situacao) {
         this.situacao = situacao;
     }
 
-    public int getSituacao() {
+    public Situacao getSituacao() {
         return situacao;
     }
 
@@ -186,8 +195,9 @@ public class Produto {
 
     public Produto obterProduto() {
         Produto produto = new Produto();
+        int entrada = 0;
         System.out.print("Insira o codigo do produto: ");
-        produto.setCodigo(Integer.parseInt(s.nextLine()));
+        produto.setCodigo(Long.parseLong(s.nextLine()));
         System.out.print("Insira o nome do produto: ");
         produto.setNome(s.nextLine());
         System.out.print("Insira o descrição do produto: ");
@@ -199,7 +209,29 @@ public class Produto {
         System.out.print("Insira a data da validade do produto: ");
         produto.setDataValidade(LocalDate.parse(s.nextLine(), formator));
         System.out.print("Insira a situação do produto: ");
-        produto.setSituacao(Integer.parseInt(s.nextLine()));
+        do {
+            System.out.println("Escolha a situacao");
+            System.out.println("1 - Válido");
+            System.out.println("2 - Inválido");
+            System.out.println("3 - Descontinuado");
+            System.out.print("Situacao: ");
+            entrada = Integer.parseInt(s.nextLine());
+            switch (entrada) {
+                case 1:
+                    produto.setSituacao(Situacao.VALIDO);
+                    break;
+                case 2:
+                    produto.setSituacao(Situacao.INVALIDO);
+                    break;
+                case 3:
+                    produto.setSituacao(Situacao.DESCONTINUADO);
+                    break;
+                default:
+                    System.out.println("Valor inválido");
+                    break;
+            }
+        } while (entrada < 1 || entrada > 3);
+        ;
         System.out.print("Insira a marca do produto: ");
         produto.setMarca(s.nextLine());
         System.out.print("Insira a quantidade minima do produto: ");

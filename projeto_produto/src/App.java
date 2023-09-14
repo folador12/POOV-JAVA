@@ -1,16 +1,18 @@
-import java.math.BigDecimal;
-import java.time.LocalDate;
+
+import java.util.ArrayList;
+
+import itens.Produto;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Produto p1 = new Produto(12, "Batata", "Uma Batata", new BigDecimal("30.00"), LocalDate.now(), LocalDate.now(),
-                1, "Omo", 5, 14);
-        Produto p2 = new Produto();
+        Produto p1 = new Produto();
+        ArrayList<Produto> produtos = new ArrayList<Produto>();
+        produtos.add(new Produto());
+        // produtos.add(p1.obterProduto());
 
-        p1.mostrar();
-        System.out.println("-------------------------------------------------");
-        p2 = p2.obterProduto();
-        System.out.println("-------------------------------------------------");
-        p2.mostrar();
+        for (Produto produto : produtos) {
+            produto.mostrar();
+            System.out.println();
+        }
     }
 }

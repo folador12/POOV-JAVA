@@ -1,3 +1,5 @@
+package iluminacao;
+
 import java.security.InvalidParameterException;
 
 public class Lampada {
@@ -11,10 +13,8 @@ public class Lampada {
     // Construtor é um inicializador para as classes
     // Construtor Padrao
     public Lampada() {
-        System.out.println("Construtor padrao da Lampada executado");
         tensao = 220;
         potencia = 100;
-        // acesa = false;
     }
 
     // Construtor de Inicializacao 1
