@@ -18,13 +18,11 @@ public class Tv {
     }
 
     // Construtor Inicialização
-    public Tv(int tamanho, int canal, int volume, boolean ligada, String resolucao, boolean smart) {
+    public Tv(int tamanho, int canal, int volume, String resolucao) {
         setTamanho(tamanho);
         setCanal(canal);
         setVolume(volume);
         this.resolucao = resolucao;
-        this.ligada = ligada;
-        this.smart = smart;
     }
 
     public void setTamanho(int tamanho) {

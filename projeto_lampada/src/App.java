@@ -2,7 +2,7 @@ import iluminacao.Lampada;
 import iluminacao.LampadaColorida;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main() throws Exception {
         Lampada l1 = new Lampada();
         LampadaColorida lc = new LampadaColorida();
         // l2.mostrar();
