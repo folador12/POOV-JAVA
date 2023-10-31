@@ -1,7 +1,5 @@
 package poov.modelo;
 
-import poov.testes.Situacao;
-
 public class Vacina {
     private Long codigo;
     private String nome;
@@ -18,13 +16,21 @@ public class Vacina {
     public Vacina(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
+        situacao = Situacao.ATIVO;
     }
 
-    public Vacina(Long codigo, String nome, String descricao, String situacao) {
+    public Vacina(Long codigo, String nome, String descricao) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
-        this.situacao = situacao.equals("ATIVO") ? Situacao.ATIVO : Situacao.INATIVO;
+        situacao = Situacao.ATIVO;
+    }
+
+    public Vacina(Long codigo, String nome, String descricao, Situacao situacao) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.situacao = situacao;
     }
 
     public static void main(String[] args) {
